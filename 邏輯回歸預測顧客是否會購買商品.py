@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 # 產生假資料(模擬數據)：顧客瀏覽時間 (minutes) 與是否購買商品 (0: 不購買, 1: 購買)
 np.random.seed(42)
@@ -16,6 +17,11 @@ X_train, X_test, y_train, y_test = train_test_split(browse_time, purchase, test_
 # 訓練邏輯回歸模型
 model = LogisticRegression()
 model.fit(X_train, y_train)
+
+# 評估模型
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2%}")
 
 # 預測購買概率
 browse_time_fit = np.linspace(1, 20, 100).reshape(-1, 1)  # 測試數據 (瀏覽時間範圍)

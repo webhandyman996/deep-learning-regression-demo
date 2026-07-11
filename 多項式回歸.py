@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import mean_squared_error
 '''
 多項式回歸（Polynomial Regression）
 是線性回歸的擴展，透過增加變數的多項式項來捕捉非線性關係。
@@ -27,6 +28,11 @@ X_poly = poly.fit_transform(X)
 # 訓練多項式回歸模型
 model = LinearRegression()
 model.fit(X_poly, y)
+
+# 評估模型
+y_pred = model.predict(X_poly)
+mse = mean_squared_error(y, y_pred)
+print(f"Mean Squared Error: {mse:.2f}")
 
 # 預測
 X_fit = np.linspace(0, 10, 100).reshape(-1, 1)  # 測試數據
