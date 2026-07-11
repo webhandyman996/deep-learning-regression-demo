@@ -1,6 +1,6 @@
 # 回歸方法教學範例（機器學習基礎）
 
-本 repo 為「深度學習」課程中機器學習基礎單元的教學範例程式，透過經典回歸演算法，讓學生在進入深度學習之前，先建立對監督式學習、模型訓練與評估的基本概念。
+本 repo 為機器學習基礎單元的教學範例程式，透過經典回歸演算法，讓學生建立對監督式學習、模型訓練與評估的基本概念。
 
 ## 內容
 
@@ -19,6 +19,6 @@
 
 Python 3.x，需安裝 `scikit-learn`、`matplotlib`、`numpy` 等套件。
 
-## `regression-scenarios-demo-web/`
+## `docs/`
 
-網頁版互動展示，詳見該資料夾內的 README。
+教學網頁（GitHub Pages）：https://webhandyman996.github.io/deep-learning-regression-demo/
