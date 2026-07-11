@@ -1,5 +1,7 @@
 # 回歸方法教學範例（機器學習基礎）
 
+🔗 **教學網頁：https://webhandyman996.github.io/deep-learning-regression-demo/**
+
 本 repo 為機器學習基礎單元的教學範例程式，透過經典回歸演算法，讓學生建立對監督式學習、模型訓練與評估的基本概念。
 
 ## 內容
