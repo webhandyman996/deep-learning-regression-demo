@@ -136,6 +136,20 @@
       padding: 0.55rem 0.7rem;
     }
     .concept strong { color: var(--accent-2); }
+    .params {
+      margin-top: 0.5rem;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: #4d4137;
+      background: #f6f1e7;
+      border-radius: 8px;
+      padding: 0.55rem 0.7rem;
+    }
+    .params-title { margin: 0 0 0.3rem; font-weight: 700; color: var(--accent-2); }
+    .params ul { margin: 0; padding-left: 1.1rem; }
+    .params li { margin-bottom: 0.35rem; }
+    .params li:last-child { margin-bottom: 0; }
+    .params strong { color: var(--accent-2); }
     .nav {
       margin-top: 1.2rem;
       display: flex;
@@ -311,7 +325,10 @@
           <h3>多項式回歸：煞車係數調整</h3>
           <div class="preview-grid"><figure><img class="preview small" src="results/poly_brake_1.png" alt="a=0.02,b=1.0,c=2.0" loading="lazy" /><figcaption>a=0.02,b=1.0,c=2.0</figcaption></figure><figure><img class="preview small" src="results/poly_brake_2.png" alt="a=0.05,b=2.0,c=5.0" loading="lazy" /><figcaption>a=0.05,b=2.0,c=5.0</figcaption></figure><figure><img class="preview small" src="results/poly_brake_3.png" alt="a=0.08,b=3.5,c=8.0" loading="lazy" /><figcaption>a=0.08,b=3.5,c=8.0</figcaption></figure></div>
           <p>拖曳 a、b、c 三個係數，觀察煞車距離曲線變化。</p>
-          <p class="concept"><strong>核心概念：</strong>a 決定二次項（高速時距離暴增的程度），b 決定一次項（與速度的線性關係），c 是常數項（車速為 0 時仍可能有的基礎距離）。逐一調整可看出每個係數各自的影響。</p>
+          <div class="params">
+            <p class="params-title">各參數的意義與影響：</p>
+            <ul><li><strong>a（x² 項係數）</strong>：值越大，車速增加時煞車距離會以更快的加速度上升，代表高速時煞車距離對速度更敏感。</li><li><strong>b（x 項係數）</strong>：控制速度與煞車距離的線性比例，值越大代表低速時煞車距離也拉長越多。</li><li><strong>c（常數項）</strong>：即使車速趨近 0，仍會存在的基礎距離（例如反應距離）。</li></ul>
+          </div>
           <div class="actions">
             <a class="btn btn-src" href="https://github.com/webhandyman996/deep-learning-regression-demo/blob/master/%E5%A4%9A%E9%A0%85%E5%BC%8F%E5%9B%9E%E6%AD%B8%E9%A0%90%E6%B8%AC%E7%85%9E%E8%BB%8A.py" target="_blank" rel="noopener">查看原始碼</a>
             <a class="btn btn-colab btn-primary" href="https://colab.research.google.com/github/webhandyman996/deep-learning-regression-demo/blob/master/docs/notebooks/poly_brake.ipynb" target="_blank" rel="noopener">在 Colab 開啟互動版（需等待約1-3分鐘連線）</a>
@@ -322,7 +339,10 @@
           <h3>多項式回歸：調整項次 Degree</h3>
           <div class="preview-grid"><figure><img class="preview small" src="results/poly_degree_1.png" alt="degree=1" loading="lazy" /><figcaption>degree=1</figcaption></figure><figure><img class="preview small" src="results/poly_degree_2.png" alt="degree=2" loading="lazy" /><figcaption>degree=2</figcaption></figure><figure><img class="preview small" src="results/poly_degree_3.png" alt="degree=5" loading="lazy" /><figcaption>degree=5</figcaption></figure><figure><img class="preview small" src="results/poly_degree_4.png" alt="degree=9" loading="lazy" /><figcaption>degree=9</figcaption></figure></div>
           <p>拖曳 Degree 滑桿，觀察項次如何影響曲線彎曲程度。</p>
-          <p class="concept"><strong>核心概念：</strong>Degree 是多項式的最高次方，數字越大曲線能彎得越複雜；但太高容易「過擬合」——曲線硬是穿過每個雜訊點，反而喪失預測新資料的能力。</p>
+          <div class="params">
+            <p class="params-title">各參數的意義與影響：</p>
+            <ul><li><strong>Degree（多項式次方）</strong>：次方越高，曲線能彎出越複雜的形狀、更貼近訓練資料點；但次方太高時曲線會過度追逐雜訊，造成過擬合，在新資料上反而表現變差。</li></ul>
+          </div>
           <div class="actions">
             <a class="btn btn-src" href="https://github.com/webhandyman996/deep-learning-regression-demo/blob/master/%E5%A4%9A%E9%A0%85%E5%BC%8F%E5%9B%9E%E6%AD%B8%E9%A0%90%E6%B8%AC%E7%85%9E%E8%BB%8A2.py" target="_blank" rel="noopener">查看原始碼</a>
             <a class="btn btn-colab btn-primary" href="https://colab.research.google.com/github/webhandyman996/deep-learning-regression-demo/blob/master/docs/notebooks/poly_degree.ipynb" target="_blank" rel="noopener">在 Colab 開啟互動版（需等待約1-3分鐘連線）</a>
@@ -333,7 +353,10 @@
           <h3>Ridge 回歸：調整 Alpha</h3>
           <div class="preview-grid"><figure><img class="preview small" src="results/ridge_alpha_1.png" alt="alpha=0.1" loading="lazy" /><figcaption>alpha=0.1</figcaption></figure><figure><img class="preview small" src="results/ridge_alpha_2.png" alt="alpha=3.0" loading="lazy" /><figcaption>alpha=3.0</figcaption></figure><figure><img class="preview small" src="results/ridge_alpha_3.png" alt="alpha=10.0" loading="lazy" /><figcaption>alpha=10.0</figcaption></figure></div>
           <p>拖曳 Alpha 滑桿，觀察正則化強度如何影響 MSE。</p>
-          <p class="concept"><strong>核心概念：</strong>alpha 越大，預測值越往「安全的平均值」靠攏、不敢做極端預測；但 alpha 太大會讓模型變得太保守。實際試試看，MSE 不一定隨 alpha 越大越小，找出最佳值。</p>
+          <div class="params">
+            <p class="params-title">各參數的意義與影響：</p>
+            <ul><li><strong>Alpha（正則化強度）</strong>：值越大，模型對係數的懲罰越重，預測結果會趨於保守、更平滑；值太小則接近一般線性回歸，容易受雜訊影響。需要在「準確」與「穩定」之間取捨。</li></ul>
+          </div>
           <div class="actions">
             <a class="btn btn-src" href="https://github.com/webhandyman996/deep-learning-regression-demo/blob/master/%E5%B6%BA%E5%9B%9E%E6%AD%B8Ridge%20Regression%E9%A0%90%E6%B8%AC%E5%95%86%E5%93%81%E9%8A%B7%E5%94%AE%E9%A1%8D%E8%88%87%E5%BB%A3%E5%91%8A%E9%97%9C%E4%BF%822%E7%95%B0%E5%B8%B8.py" target="_blank" rel="noopener">查看原始碼</a>
             <a class="btn btn-colab btn-primary" href="https://colab.research.google.com/github/webhandyman996/deep-learning-regression-demo/blob/master/docs/notebooks/ridge_alpha.ipynb" target="_blank" rel="noopener">在 Colab 開啟互動版（需等待約1-3分鐘連線）</a>
@@ -344,7 +367,10 @@
           <h3>SVR：調整 C / Gamma / Epsilon</h3>
           <div class="preview-grid"><figure><img class="preview small" src="results/svr_params_1.png" alt="C=1,γ=0.01,ε=0.01" loading="lazy" /><figcaption>C=1,γ=0.01,ε=0.01</figcaption></figure><figure><img class="preview small" src="results/svr_params_2.png" alt="C=100,γ=0.1,ε=0.1" loading="lazy" /><figcaption>C=100,γ=0.1,ε=0.1</figcaption></figure><figure><img class="preview small" src="results/svr_params_3.png" alt="C=200,γ=1.0,ε=0.5" loading="lazy" /><figcaption>C=200,γ=1.0,ε=0.5</figcaption></figure></div>
           <p>拖曳三個參數滑桿，觀察 SVR 核函數參數影響。</p>
-          <p class="concept"><strong>核心概念：</strong>C 控制對誤差的容忍度（越大越不能忍受誤差，容易過擬合）；Gamma 控制 RBF 核函數的影響範圍（越大只看鄰近點，也容易過擬合）；Epsilon 是不計入損失的誤差容忍帶。三者要一起調整才能找到平衡點。</p>
+          <div class="params">
+            <p class="params-title">各參數的意義與影響：</p>
+            <ul><li><strong>C（誤差懲罰係數）</strong>：值越大，模型越不能容忍訓練誤差，會努力擬合每個點，但容易過擬合；值越小則越能容忍誤差，模型較平滑但可能欠擬合。</li><li><strong>Gamma（RBF 核函數範圍）</strong>：值越大，每個資料點的影響範圍越小（只影響鄰近點），容易產生複雜、貼合局部資料的曲線；值越小則每個點影響範圍越廣，模型較平滑。</li><li><strong>Epsilon（誤差容忍帶）</strong>：這個範圍內的誤差不計入損失，值越大模型對小誤差越寬容、得到的支持向量越少；值越小則模型會更嚴格地擬合資料。</li></ul>
+          </div>
           <div class="actions">
             <a class="btn btn-src" href="https://github.com/webhandyman996/deep-learning-regression-demo/blob/master/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E6%AD%B8SVR%E9%A0%90%E6%B8%AC%E6%B1%BD%E8%BB%8A%E7%9A%84%E6%B2%B9%E8%80%972.py" target="_blank" rel="noopener">查看原始碼</a>
             <a class="btn btn-colab btn-primary" href="https://colab.research.google.com/github/webhandyman996/deep-learning-regression-demo/blob/master/docs/notebooks/svr_params.ipynb" target="_blank" rel="noopener">在 Colab 開啟互動版（需等待約1-3分鐘連線）</a>
@@ -355,7 +381,10 @@
           <h3>邏輯回歸：調整分類門檻 Threshold</h3>
           <div class="preview-grid"><figure><img class="preview small" src="results/logistic_threshold_1.png" alt="threshold=0.2" loading="lazy" /><figcaption>threshold=0.2</figcaption></figure><figure><img class="preview small" src="results/logistic_threshold_2.png" alt="threshold=0.5" loading="lazy" /><figcaption>threshold=0.5</figcaption></figure><figure><img class="preview small" src="results/logistic_threshold_3.png" alt="threshold=0.8" loading="lazy" /><figcaption>threshold=0.8</figcaption></figure></div>
           <p>拖曳 Threshold 滑桿，觀察分類門檻如何影響判定結果。</p>
-          <p class="concept"><strong>核心概念：</strong>邏輯回歸算出的是「機率」，threshold 決定「機率超過多少才算會購買」。threshold 越低，越容易判定為會購買（但可能誤判變多）；threshold 越高則相反。</p>
+          <div class="params">
+            <p class="params-title">各參數的意義與影響：</p>
+            <ul><li><strong>Threshold（分類門檻）</strong>：模型輸出的是「購買機率」，Threshold 是判斷「算不算購買」的分界線。值越低，越容易判定為會購買（可能增加誤判）；值越高則判斷更嚴格（可能漏掉真的會購買的顧客）。</li></ul>
+          </div>
           <div class="actions">
             <a class="btn btn-src" href="https://github.com/webhandyman996/deep-learning-regression-demo/blob/master/%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E9%A0%90%E6%B8%AC%E9%A1%A7%E5%AE%A2%E6%98%AF%E5%90%A6%E6%9C%83%E8%B3%BC%E8%B2%B7%E5%95%86%E5%93%812.py" target="_blank" rel="noopener">查看原始碼</a>
             <a class="btn btn-colab btn-primary" href="https://colab.research.google.com/github/webhandyman996/deep-learning-regression-demo/blob/master/docs/notebooks/logistic_threshold.ipynb" target="_blank" rel="noopener">在 Colab 開啟互動版（需等待約1-3分鐘連線）</a>
