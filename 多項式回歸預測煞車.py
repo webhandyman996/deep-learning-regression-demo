@@ -3,7 +3,29 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from matplotlib.widgets import Slider
+"""
+多項式回歸預測煞車距離 - 互動式次數調整版
+==========================================================
+本程式示範多項式回歸 (Polynomial Regression) 如何擬合
+汽車速度 (km/h) 與煞車距離 (m) 之間的非線性關係。
 
+物理背景：
+  根據運動學，煞車距離與速度的關係近似於二次曲線：
+      d = v² / (2·a) + v·t_reaction
+  其中 a 為煞車加速度，t_reaction 為反應時間。
+  本程式以帶噪聲的模擬資料驗證此規律。
+
+互動功能：
+  拖曳底部「Degree」滑桿可即時調整多項式次數 (1～10)，
+  觀察次數過低 (欠擬合) 或過高 (過擬合) 對曲線的影響，
+  並在圖形左上角顯示當前擬合的多項式方程式。
+
+多項式回歸原理：
+  1. 將原始特徵 x 透過 PolynomialFeatures 展開為
+     [1, x, x², x³, ..., xⁿ]
+  2. 再以普通線性回歸 (LinearRegression / 最小平方法) 求係數，
+     得到 y = w₀ + w₁x + w₂x² + ... + wₙxⁿ
+"""
 # 模擬數據：汽車速度 (km/h) 與煞車距離 (m)
 np.random.seed(42)
 speed = np.random.uniform(20, 120, 50).reshape(-1, 1)  # 汽車速度 (20 到 120 km/h)
